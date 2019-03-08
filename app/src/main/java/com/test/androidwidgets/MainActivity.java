@@ -4,7 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView idTxt;
     EditText editTxtWriting;
+    Button  btnMessage;
 
 
     @Override
@@ -32,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         //
         ///////////////////////////////////////////////////////////////
 
-        editTxtWriting = (EditText) findViewById(R.id.editTxtWriting);
+        editTxtWriting = findViewById(R.id.editTxtWriting);
 
         editTxtWriting.addTextChangedListener(new TextWatcher() {
             @Override
@@ -58,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         //
         ///////////////////////////////////////////////////////////////
 
-        idTxt = (TextView) findViewById(R.id.idTxt);
+        idTxt = findViewById(R.id.idTxt);
 
         idTxt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,5 +73,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        ///////////////////////////////////////////////////////////////
+        //
+        // Button widget
+        //
+        ///////////////////////////////////////////////////////////////
+
+        btnMessage = findViewById(R.id.btnMessage);
+
+        btnMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toastTop = Toast.makeText(getApplicationContext(), "Position Top", Toast.LENGTH_SHORT);
+                toastTop.setGravity(Gravity.TOP, 0, 0);
+                toastTop.show();
+
+                Toast toastCenter = Toast.makeText(getApplicationContext(), "Position Center", Toast.LENGTH_SHORT);
+                toastCenter.setGravity(Gravity.CENTER, 0, 0);
+                toastCenter.show();
+
+                Toast toastBotton = Toast.makeText(getApplicationContext(), "Position Bottom", Toast.LENGTH_SHORT);
+                toastBotton.setGravity(Gravity.BOTTOM, 0, 0);
+                toastBotton.show();
+            }
+        });
     }
 }
