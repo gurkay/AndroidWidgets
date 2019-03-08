@@ -21,4 +21,13 @@
         android:text="Hello World!"
         android:textSize="30sp" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnMessage"
+        android:layout_margin="30sp"
+        android:text="Button Message"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"/>
+
 </LinearLayout>

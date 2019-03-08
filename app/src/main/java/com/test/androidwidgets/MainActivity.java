@@ -17,8 +17,8 @@ public class MainActivity extends AppCompatActivity {
     //
     ///////////////////////////////////////////////////////////////
 
-    TextView txtView;
-    EditText editText;
+    TextView idTxt;
+    EditText editTxtWriting;
 
 
     @Override
@@ -32,9 +32,9 @@ public class MainActivity extends AppCompatActivity {
         //
         ///////////////////////////////////////////////////////////////
 
-        editText = (EditText) findViewById(R.id.editTxtWriting);
+        editTxtWriting = (EditText) findViewById(R.id.editTxtWriting);
 
-        editText.addTextChangedListener(new TextWatcher() {
+        editTxtWriting.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -42,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String str = editText.getText().toString();
-                txtView.setText(str);
+                String str = editTxtWriting.getText().toString();
+                idTxt.setText(str);
             }
 
             @Override
@@ -58,12 +58,12 @@ public class MainActivity extends AppCompatActivity {
         //
         ///////////////////////////////////////////////////////////////
 
-        txtView = (TextView) findViewById(R.id.idTxt);
+        idTxt = (TextView) findViewById(R.id.idTxt);
 
-        txtView.setOnClickListener(new View.OnClickListener() {
+        idTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String myVar = txtView.getText().toString();
+                String myVar = idTxt.getText().toString();
 
                 Toast.makeText(getApplicationContext(), myVar, Toast.LENGTH_SHORT).show();
 
