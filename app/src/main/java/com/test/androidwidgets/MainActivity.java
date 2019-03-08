@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     TextView idTxt;
     EditText editTxtWriting;
     Button  btnMessage;
+    ToggleButton toggleButton;
 
 
     @Override
@@ -95,6 +97,25 @@ public class MainActivity extends AppCompatActivity {
                 Toast toastBotton = Toast.makeText(getApplicationContext(), "Position Bottom", Toast.LENGTH_SHORT);
                 toastBotton.setGravity(Gravity.BOTTOM, 0, 0);
                 toastBotton.show();
+            }
+        });
+
+        ///////////////////////////////////////////////////////////////
+        //
+        // Toggle Button widget
+        //
+        ///////////////////////////////////////////////////////////////
+
+        toggleButton = findViewById(R.id.toggleButton);
+
+        toggleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (toggleButton.isChecked()){
+                    Toast.makeText(getApplicationContext(), "Toggle Button : " + toggleButton.getText().toString(), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Toggle Button : " + toggleButton.getText().toString(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
