@@ -5,6 +5,9 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -12,12 +15,13 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-public class SecondActivity extends AppCompatActivity {
+public class SecondActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     ///////////////////////////////////////////////////////////////
     //
@@ -31,6 +35,7 @@ public class SecondActivity extends AppCompatActivity {
     RadioButton radioOne, radioTwo, radioThree;
     RadioGroup radioAttendGroup;
     LinearLayout radioLinearLayout;
+    Spinner spinnerCity, spinnerPassingActivity;
 
     ///////////////////////////////////////////////////////////////
     //
@@ -39,6 +44,8 @@ public class SecondActivity extends AppCompatActivity {
     ///////////////////////////////////////////////////////////////
 
     String editTxtWritingValue, stringTestValue;
+    String[] cityName = {"Select City", "ANKARA", "ADANA", "BURSA", "MALATYA", "AFYONKARAHİSAR", "KAHRAMANMARAŞ"};
+    String[] spinnerPassingActivityString = {"Select Activity", "Main Activity", "Second Activity", "Three Activity", "Four Activity", "Five Activity", "Six Activity"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,6 +133,60 @@ public class SecondActivity extends AppCompatActivity {
                 }
             }
         });
+
+        ///////////////////////////////////////////////////////////////
+        //
+        // Spinner Component Using
+        //
+        ///////////////////////////////////////////////////////////////
+
+        spinnerCity = findViewById(R.id.spinnerCity);
+        spinnerCity.setOnItemSelectedListener(this);
+        ArrayAdapter adapterSpinner = new ArrayAdapter(this, android.R.layout.simple_spinner_item, cityName);
+        adapterSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerCity.setAdapter(adapterSpinner);
+
+        spinnerPassingActivity = findViewById(R.id.spinnerPassingActivity);
+        spinnerPassingActivity.setOnItemSelectedListener(this);
+        ArrayAdapter adapterSpinnerActivity = new ArrayAdapter(this, android.R.layout.simple_spinner_item, spinnerPassingActivityString);
+        adapterSpinnerActivity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerPassingActivity.setAdapter(adapterSpinnerActivity);
+
+    }
+
+    ///////////////////////////////////////////////////////////////
+    //
+    // Spinner onItemSelected and onNothingSelected Using
+    //
+    ///////////////////////////////////////////////////////////////
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        if(parent.getId() == R.id.spinnerCity) {
+            Toast.makeText(getApplicationContext(), cityName[position], Toast.LENGTH_SHORT).show();
+        } else if (parent.getId() == R.id.spinnerPassingActivity) {
+            switch (position){
+                case 0:
+                    Toast.makeText(getApplicationContext(), spinnerPassingActivityString[position], Toast.LENGTH_SHORT).show();
+                    break;
+                case 1:
+                    Intent intentMainActivity = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intentMainActivity);
+                    break;
+                case 2:
+                    Intent intentSecondActivity = new Intent(getApplicationContext(), SecondActivity.class);
+                    startActivity(intentSecondActivity);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
 
     }
 }
