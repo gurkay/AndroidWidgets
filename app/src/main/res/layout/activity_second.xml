@@ -22,7 +22,97 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Second Activity Value"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:id="@+id/txtViewSecondActivity"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkLinearLayout"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/aCheckBox"
+            android:checked="false"
+            android:text="One Check"
+            android:padding="2sp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            android:textStyle="bold|italic"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bCheckBox"
+            android:checked="false"
+            android:text="Two Check"
+            android:padding="2sp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            android:textStyle="bold|italic"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnCheckBoxSubmit"
+            android:layout_gravity="center"
+            android:layout_margin="5sp"
+            android:text="Check Box Submit"
+            android:textColor="@color/colorPrimary"
+            android:textSize="30sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/radioLinearLayout"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioAttendGroup">
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioOne"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:text="Radio Button One"
+                android:textColor="#154"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioTwo"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:text="Radio Button Two"
+                android:textColor="#154"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioThree"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:text="Radio Button Three"
+                android:textColor="#154"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+        </RadioGroup>
+
+    </LinearLayout>
 
 </LinearLayout>
