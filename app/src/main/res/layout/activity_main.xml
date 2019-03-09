@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/mainLinearLayout"
+    android:gravity="center"
     tools:context=".MainActivity">
 
     <EditText
@@ -25,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnMessage"
-        android:layout_margin="30sp"
+        android:layout_margin="5sp"
         android:text="@string/app_name"
         android:textColor="#FFFFFF"
         android:textSize="30sp"/>
@@ -34,11 +36,32 @@
         android:id="@+id/toggleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
+        android:layout_margin="5dp"
         android:layout_gravity="center_horizontal"
         android:checked="false"
         android:drawablePadding="20dp"
         android:drawableRight="@mipmap/ic_launcher_test"
         android:textColor="#000"/>
+
+    <Switch
+        android:id="@+id/switchDemo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_gravity="center"
+        android:drawableLeft="@mipmap/ic_launcher_test"
+        android:checked="false"
+        android:textSize="20dp"
+        android:textOff="off"
+        android:textOn="On"
+        android:text="Switch" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:src="@mipmap/ic_launcher_test"/>
+
 
 </LinearLayout>

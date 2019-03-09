@@ -1,5 +1,7 @@
 package com.test.androidwidgets;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -7,7 +9,11 @@ import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -16,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     ///////////////////////////////////////////////////////////////
     //
-    // Text widget Component
+    // Widget Components
     //
     ///////////////////////////////////////////////////////////////
 
@@ -24,12 +30,73 @@ public class MainActivity extends AppCompatActivity {
     EditText editTxtWriting;
     Button  btnMessage;
     ToggleButton toggleButton;
+    Switch switchDemo;
+    LinearLayout mainLinearLayout;
+    ImageButton imageButton;
 
+    ///////////////////////////////////////////////////////////////
+    //
+    // Variables
+    //
+    ///////////////////////////////////////////////////////////////
+
+    String editTxtWritingValue, stringTestValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ///////////////////////////////////////////////////////////////
+        //
+        // Image Button Component Using
+        //
+        ///////////////////////////////////////////////////////////////
+
+        imageButton = findViewById(R.id.imageButton);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(MainActivity.this, "Image Button Clicked", Toast.LENGTH_SHORT).show();
+
+                ///////////////////////////////////////////////////////////////
+                //
+                // Send Second Activity Values
+                //
+                ///////////////////////////////////////////////////////////////
+
+                Intent intent = new Intent(getApplicationContext(), SecondActivity.class);
+                editTxtWritingValue = editTxtWriting.getText().toString();
+                stringTestValue = "String Test Value";
+                intent.putExtra("editTxtWritingValue", editTxtWritingValue);
+                intent.putExtra("stringTestValue", stringTestValue);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        ///////////////////////////////////////////////////////////////
+        //
+        // Switch Component Using
+        //
+        ///////////////////////////////////////////////////////////////
+
+        switchDemo = findViewById(R.id.switchDemo);
+        mainLinearLayout = findViewById(R.id.mainLinearLayout);
+
+        switchDemo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(switchDemo.isChecked()){
+                    mainLinearLayout.setBackgroundColor(Color.YELLOW);
+                    Toast.makeText(getApplicationContext(), "Switch State : " + switchDemo.getTextOn().toString(), Toast.LENGTH_SHORT).show();
+                } else {
+                    mainLinearLayout.setBackgroundColor(Color.RED);
+                    Toast.makeText(getApplicationContext(), "Switch State : " + switchDemo.getTextOff().toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         ///////////////////////////////////////////////////////////////
         //
