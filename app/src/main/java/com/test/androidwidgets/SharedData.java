@@ -21,7 +21,7 @@ public class SharedData {
 
     private String[] spinnerPassingActivityString = {"Select Activity", "Main Activity",
             "Second Activity", "Three Activity", "Four Activity", "Five Activity", "Six Activity"};
-    // Acurrent Activity
+    // Current Activity
     private Activity myCurrentActivity = null;
 
     ///////////////////////////////////////////////////////////////
@@ -30,11 +30,11 @@ public class SharedData {
     //
     ///////////////////////////////////////////////////////////////
 
-    public String[] getSpinnerPassingActivityString(){
+    protected String[] getSpinnerPassingActivityString(){
         return spinnerPassingActivityString;
     }
 
-    public String getSpinnerPassingActivityString(int position){
+    private String getSpinnerPassingActivityString(int position){
         return spinnerPassingActivityString[position];
     }
 
@@ -44,7 +44,7 @@ public class SharedData {
     //
     ///////////////////////////////////////////////////////////////
 
-    public void setSpinnerNavigation(int position, int parentGetId) {
+    protected void setSpinnerNavigation(int position, int parentGetId) {
         String activityName = myCurrentActivity.getClass().getSimpleName();
 
         if (parentGetId == R.id.spinnerPassingActivity) {
@@ -56,16 +56,16 @@ public class SharedData {
                     if (activityName.equalsIgnoreCase("MainActivity")) {
                         Toast.makeText(getMyCurrentActivity(), activityName, Toast.LENGTH_SHORT).show();
                     } else {
-                        Intent intentMainActivity = new Intent(myCurrentActivity.getApplicationContext(), MainActivity.class);
-                        myCurrentActivity.startActivity(intentMainActivity);
+                        Intent intentMainActivity = new Intent(getMyCurrentActivity(), MainActivity.class);
+                        getMyCurrentActivity().startActivity(intentMainActivity);
                     }
                     break;
                 case 2:
                     if (activityName.equalsIgnoreCase("SecondActivity")) {
                         Toast.makeText(getMyCurrentActivity(), activityName, Toast.LENGTH_SHORT).show();
                     } else {
-                        Intent intentSecondActivity = new Intent(myCurrentActivity, SecondActivity.class);
-                        myCurrentActivity.startActivity(intentSecondActivity);
+                        Intent intentSecondActivity = new Intent(getMyCurrentActivity(), SecondActivity.class);
+                        getMyCurrentActivity().startActivity(intentSecondActivity);
                     }
                     break;
                 case 3:
@@ -73,7 +73,7 @@ public class SharedData {
                         Toast.makeText(getMyCurrentActivity(), activityName, Toast.LENGTH_SHORT).show();
                     } else {
                         Intent intentThreeActivity = new Intent(getMyCurrentActivity(), ThreeActivity.class);
-                        myCurrentActivity.startActivity(intentThreeActivity);
+                        getMyCurrentActivity().startActivity(intentThreeActivity);
                     }
                     break;
                 default:
@@ -88,11 +88,11 @@ public class SharedData {
     //
     ///////////////////////////////////////////////////////////////
 
-    public Activity getMyCurrentActivity() {
+    private Activity getMyCurrentActivity() {
         return myCurrentActivity;
     }
 
-    public void setMyCurrentActivity(Activity myCurrentActivity) {
+    protected void setMyCurrentActivity(Activity myCurrentActivity) {
         this.myCurrentActivity = myCurrentActivity;
     }
 }
