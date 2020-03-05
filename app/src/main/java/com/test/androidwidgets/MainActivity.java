@@ -1,5 +1,6 @@
 package com.test.androidwidgets;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     Switch switchDemo;
     LinearLayout mainLinearLayout;
     ImageButton imageButton;
+    Context context = this;
 
     ///////////////////////////////////////////////////////////////
     //
@@ -58,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(MainActivity.this, "Image Button Clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Image Button Clicked", Toast.LENGTH_SHORT).show();
 
                 ///////////////////////////////////////////////////////////////
                 //
